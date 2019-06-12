@@ -66,6 +66,23 @@ typedef struct {
     bool single_status_byte: 1;
 } external_flash_device;
 
+// IS25LP064A, used on Conservify FieldKit.
+#define IS25LP064A {                      \
+    .total_size = (1 << 23), /* 8 MiB */  \
+    .start_up_time_us = 10000,            \
+    .manufacturer_id = 0x9d,              \
+    .memory_type = 0x60,                  \
+    .capacity = 0x17,                     \
+    .max_clock_speed_mhz = 104,           \
+    .quad_enable_bit_mask = 0x01 << 6,    \
+    .has_sector_protection = false,       \
+    .supports_fast_read = true,           \
+    .supports_qspi = true,                \
+    .supports_qspi_writes = true,         \
+    .write_status_register_split = false, \
+    .single_status_byte = true,           \
+}
+
 // Settings for the Adesto Tech AT25DF081A 1MiB SPI flash. Its on the SAMD21
 // Xplained board.
 // Datasheet: https://www.adestotech.com/wp-content/uploads/doc8715.pdf
